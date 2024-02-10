@@ -1,7 +1,9 @@
 FROM ubuntu:jammy
-RUN apt update
-RUN apt install -y build-essential curl git wget
-RUN mkdir /app
+RUN apt update && \
+    apt upgrade && \
+    apt install -y build-essential curl git wget
+RUN mkdir /app && \
+    cd /app
 
 RUN apt install -y p7zip-full
 
