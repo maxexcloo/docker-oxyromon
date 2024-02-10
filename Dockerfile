@@ -1,7 +1,7 @@
 FROM ubuntu:jammy
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y build-essential curl git wget
+    apt install -y build-essential curl git python3 python3-pip wget
 RUN mkdir /app && \
     cd /app
 
@@ -50,8 +50,7 @@ RUN cd /app && \
     make install && \
     cd .. && \
     rm -rf maxcso
-    
-RUN apt install python3-pip
+
 RUN cd /app && \
     pip install nsz
 
