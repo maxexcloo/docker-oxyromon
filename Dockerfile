@@ -15,7 +15,7 @@ RUN cd /app && \
     cd ../.. && \
     rm -rf Project_CTR
 
-RUN apt install -y build-essential cmake ffmpeg libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libbluetooth-dev libcurl4-openssl-dev libevdev-dev libgl1-mesa-dev libpangocairo-1.0-0 libpulse-dev libqt6svg6-dev libswscale-dev libusb-1.0-0-dev libxi-dev libxrandr-dev qt6-base-private-dev
+RUN apt install -y build-essential cmake ffmpeg libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libbluetooth-dev libcurl4-openssl-dev libevdev-dev libgl1-mesa-dev libpangocairo-1.0-0 libpulse-dev libqt6svg6-dev libswscale-dev libusb-1.0-0-dev libxi-dev libxrandr-dev qt6-base-private-dev && \
     apt install -y libsystemd-dev libudev-dev
 RUN cd /app && \
     git clone https://github.com/dolphin-emu/dolphin.git && \
