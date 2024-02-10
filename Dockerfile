@@ -38,9 +38,9 @@ RUN cd /app && \
     cd cdrtools-3.02 && \
     make && \
     make install && \
-    ln -s /opt/schily/bin/* /usr/local/bin && \
     cd .. && \
     rm -rf cdrtools-*
+ENV PATH="/opt/schily/bin:$PATH"
 
 RUN apt install -y liblz4-dev libuv1-dev pkgconf zlib1g-dev
 RUN cd /app && \
@@ -56,6 +56,7 @@ RUN cd /app && \
 
 RUN apt install -y yarn && \
     curl https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:$PATH"
 
 RUN cd /app && \
     git clone https://github.com/alucryd/oxyromon.git && \
