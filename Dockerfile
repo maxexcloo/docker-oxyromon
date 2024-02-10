@@ -1,6 +1,6 @@
 FROM ubuntu:jammy
 RUN apt update && \
-    apt upgrade && \
+    apt upgrade -y && \
     apt install -y build-essential curl git wget
 RUN mkdir /app && \
     cd /app
