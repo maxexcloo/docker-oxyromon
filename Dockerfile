@@ -61,7 +61,7 @@ ENV PATH="/root/.cargo/bin:$PATH"
 RUN cd /app && \
     git clone https://github.com/alucryd/oxyromon.git && \
     cd oxyromon && \
-    cargo install --path . --root /usr && \
+    cargo install --features server --path . --root /usr && \
     cargo clean && \
     cd .. && \
     rm -rf oxyromon
