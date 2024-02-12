@@ -61,12 +61,12 @@ ENV PATH="/root/.cargo/bin:$PATH"
 RUN cd /app && \
     git clone https://github.com/alucryd/oxyromon.git && \
     cd oxyromon && \
-    cargo install --features server --path . --root /usr && \
+    cargo install --path . --root /usr && \
     cargo clean && \
     cd .. && \
     rm -rf oxyromon
 ENV OXYROMON_DATA_DIRECTORY=/data/cache/oxyromon \
-    OXYROMON_ROM_DIRECTORY=/data/roms
+    OXYROMON_ROM_DIRECTORY=/data/games
 
 ENTRYPOINT ["oxyromon"]
 WORKDIR /data
