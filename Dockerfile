@@ -18,7 +18,7 @@ RUN cd /app && \
     cd Project_CTR/ctrtool && \
     make deps all && \
     install bin/ctrtool /usr/local/bin && \
-    cd ../.. && \
+    cd /app && \
     rm -rf Project_CTR
 
 RUN apt install -y build-essential cmake ffmpeg libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libbluetooth-dev libcurl4-openssl-dev libevdev-dev libgl1-mesa-dev libpangocairo-1.0-0 libpulse-dev libqt6svg6-dev libswscale-dev libusb-1.0-0-dev libxi-dev libxrandr-dev qt6-base-private-dev && \
@@ -34,7 +34,7 @@ RUN cd /app && \
     cmake .. && \
     make -j$(nproc) && \
     make install && \
-    cd .. && \
+    cd /app && \
     rm -rf dolphin
 
 RUN cd /app && \
@@ -43,7 +43,7 @@ RUN cd /app && \
     cd cdrtools-3.02 && \
     make && \
     make install && \
-    cd .. && \
+    cd /app && \
     rm -rf cdrtools-*
 ENV PATH="/opt/schily/bin:$PATH"
 
@@ -54,7 +54,7 @@ RUN cd /app && \
     cd maxcso && \
     make && \
     make install && \
-    cd .. && \
+    cd /app && \
     rm -rf maxcso
 
 RUN cd /app && \
@@ -75,5 +75,7 @@ RUN cd /app && \
 ENV OXYROMON_DATA_DIRECTORY=/data/cache/oxyromon \
     OXYROMON_ROM_DIRECTORY=/data/games
 
-ENTRYPOINT ["oxyromon"]
+ADD entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
 WORKDIR /data
