@@ -1,4 +1,5 @@
 FROM ubuntu:jammy
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && \
     apt upgrade -y && \
     apt install -y build-essential curl expect git python3 python3-pip tree wget && \
