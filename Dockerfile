@@ -75,7 +75,5 @@ RUN cd /app && \
 ENV OXYROMON_DATA_DIRECTORY=/data/cache/oxyromon \
     OXYROMON_ROM_DIRECTORY=/data/games
 
-ADD entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["oxyromon"]
 WORKDIR /data
