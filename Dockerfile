@@ -1,13 +1,16 @@
 FROM ubuntu:jammy
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y build-essential curl git python3 python3-pip wget
+    apt install -y build-essential curl expect git python3 python3-pip tree wget && \
+    apt clean
 RUN mkdir /app && \
     cd /app
 
-RUN apt install -y p7zip-full
+RUN apt install -y p7zip-full && \
+    apt clean
 
-RUN apt install -y mame-tools
+RUN apt install -y mame-tools && \
+    apt clean
 
 RUN cd /app && \
     git clone https://github.com/3DSGuy/Project_CTR.git && \
@@ -18,7 +21,8 @@ RUN cd /app && \
     rm -rf Project_CTR
 
 RUN apt install -y build-essential cmake ffmpeg libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libbluetooth-dev libcurl4-openssl-dev libevdev-dev libgl1-mesa-dev libpangocairo-1.0-0 libpulse-dev libqt6svg6-dev libswscale-dev libusb-1.0-0-dev libxi-dev libxrandr-dev qt6-base-private-dev && \
-    apt install -y libsystemd-dev libudev-dev
+    apt install -y libsystemd-dev libudev-dev && \
+    apt clean
 RUN cd /app && \
     git clone https://github.com/dolphin-emu/dolphin.git && \
     cd dolphin && \
@@ -42,7 +46,8 @@ RUN cd /app && \
     rm -rf cdrtools-*
 ENV PATH="/opt/schily/bin:$PATH"
 
-RUN apt install -y liblz4-dev libuv1-dev pkgconf zlib1g-dev
+RUN apt install -y liblz4-dev libuv1-dev pkgconf zlib1g-dev && \
+    apt clean
 RUN cd /app && \
     git clone https://github.com/unknownbrackets/maxcso.git && \
     cd maxcso && \
@@ -55,6 +60,7 @@ RUN cd /app && \
     pip install nsz
 
 RUN apt install -y yarn && \
+    apt clean && \
     curl https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:$PATH"
 
