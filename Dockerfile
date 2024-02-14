@@ -72,8 +72,8 @@ RUN cd /app && \
     cargo clean && \
     cd .. && \
     rm -rf oxyromon
-ENV OXYROMON_DATA_DIRECTORY=/data/cache/oxyromon \
-    OXYROMON_ROM_DIRECTORY=/data/games
+ENV OXYROMON_DATA_DIRECTORY=/data/data/cache/oxyromon \
+    OXYROMON_ROM_DIRECTORY=/data/isos
 
 ENTRYPOINT ["oxyromon"]
 WORKDIR /data
