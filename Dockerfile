@@ -2,7 +2,7 @@ FROM ubuntu:jammy
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y build-essential curl expect git python3 python3-pip tree wget && \
+    apt install -y build-essential curl expect git python3 python3-pip && \
     apt clean
 RUN mkdir /app && \
     cd /app
@@ -38,7 +38,7 @@ RUN cd /app && \
     rm -rf dolphin
 
 RUN cd /app && \
-    wget https://sourceforge.net/projects/cdrtools/files/alpha/cdrtools-3.02a09.tar.gz/download -O cdrtools-3.02a09.tar.gz && \
+    curl -L -o cdrtools-3.02a09.tar.gz https://sourceforge.net/projects/cdrtools/files/alpha/cdrtools-3.02a09.tar.gz/download && \
     tar fxz cdrtools-3.02a09.tar.gz && \
     cd cdrtools-3.02 && \
     make && \
