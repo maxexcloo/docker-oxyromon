@@ -4,8 +4,7 @@ RUN apt update && \
     apt upgrade -y && \
     apt install -y build-essential curl expect git python3 python3-pip && \
     apt clean
-RUN mkdir /app && \
-    cd /app
+RUN mkdir /app
 
 RUN apt install -y p7zip-full && \
     apt clean
@@ -57,8 +56,7 @@ RUN cd /app && \
     cd /app && \
     rm -rf maxcso
 
-RUN cd /app && \
-    pip install nsz
+RUN pip install nsz
 
 RUN apt install -y yarn && \
     apt clean && \
@@ -70,7 +68,7 @@ RUN cd /app && \
     cd oxyromon && \
     cargo install --path . --root /usr && \
     cargo clean && \
-    cd .. && \
+    cd /app && \
     rm -rf oxyromon
 ENV OXYROMON_DATA_DIRECTORY=/data/data/cache/oxyromon \
     OXYROMON_ROM_DIRECTORY=/data/isos
